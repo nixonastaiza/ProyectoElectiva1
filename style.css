@@ -1,0 +1,47 @@
+.container {
+    border: 2px solid black;        /* Borde negro de 2px */
+    padding: 16px;                  /* Espacio interno entre borde y contenido */
+    margin-bottom: 24px;            /* Separación inferior con otros elementos */
+    background-color: rgb(15, 15, 15); /* Fondo oscuro (casi negro) */
+}
+
+.box {
+    border: 1px solid rgba(255, 8, 0, 0.87); /* Borde rojo con transparencia */
+    padding: 16px;                  /* Espacio interno */
+    margin-bottom: 16px;            /* Espacio inferior entre cajas */
+    background-color: aquamarine;   /* Fondo verde-agua */
+}
+
+/* Caja con ancho fijo en píxeles */
+.box-px {
+   width: 200px; 
+}
+
+/* Caja con ancho relativo al contenedor */
+.box-percent {
+   width: 50%;  /* Ocupa el 50% del ancho del .container */
+}
+
+/* Caja con ancho en rem (relativo al font-size del <html>) */
+.box-rem {
+   width: 15rem; /* Si html tiene font-size:16px → 15*16 = 240px */
+}
+
+/* Caja con ancho en em (relativo al font-size de este elemento) */
+.box-em {
+   font-size: 20px; 
+   width: 1em; /* 1em = 20px porque lo definimos arriba */
+}
+
+/* Caja con ancho relativo al viewport (ancho de la ventana) */
+.box-vw {
+   width: 30vw; /* 30% del ancho de la ventana del navegador */
+}
+
+/* Caja con altura relativa al viewport (alto de la ventana) */
+.box-vh {
+   height: 20vh; /* 20% de la altura de la ventana del navegador */
+}
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
