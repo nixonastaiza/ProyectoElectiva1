@@ -1,312 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnalytiShop - Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AnalytiShop — Registro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-container">
-          <div class="logo-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg>
-          </div>
-          <div class="logo-text">
-            <h1>AnalytiShop</h1>
-            <p>Analytics Platform</p>
-          </div>
-        </div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <ul>
-          <li><button class="nav-btn active" data-view="dashboard">Dashboard</button></li>
-          <li><button class="nav-btn" data-view="proyecciones">Proyecciones</button></li>
-          <li><button class="nav-btn" data-view="reportes">Reportes</button></li>
-          <li><button class="nav-btn" data-view="productos">Productos</button></li>
-          <li><button class="nav-btn" data-view="clientes">Clientes</button></li>
-          <li><button class="nav-btn" data-view="ajustes">Ajustes</button></li>
-        </ul>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="format-section">
-          <div class="format-label">Formato del Sistema</div>
-          <div class="format-options">
-            <div class="format-option">
-              <input type="radio" name="formato" id="csv" checked>
-              <label for="csv" class="csv-label">CSV</label>
-            </div>
-            <div class="format-option">
-              <input type="radio" name="formato" id="xlsx">
-              <label for="xlsx" class="xlsx-label">XLSX</label>
-            </div>
-          </div>
-        </div>
-        <div class="status-indicators">
-          <div class="status-item">
-            <span class="status-dot online"></span>
-            <span>Online</span>
-          </div>
-          <div class="status-item">
-            <span class="status-dot offline"></span>
-            <span>Offline</span>
-          </div>
-          <div class="status-item">
-            <span class="status-dot warning"></span>
-            <span>2 Clientes</span>
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Header -->
-      <header class="header">
-        <div class="header-left">
-          <h2 id="page-title">Dashboard Principal</h2>
-          <p id="page-subtitle">Para comenzar, sube tu primer archivo de ventas usando el botón de abajo</p>
-        </div>
-        <div class="header-right">
-          <input type="file" id="file-input" accept=".xlsx,.xls" style="display: none;">
-          <button class="btn-primary" id="upload-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="17 8 12 3 7 8"></polyline>
-              <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-            Subir Archivo
-          </button>
-          <div class="date-display">Oct 01 - Oct 31, 2025</div>
-          <button class="icon-btn" id="notifications-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-            </svg>
-            <span class="notification-badge"></span>
-          </button>
-          <button class="profile-btn" id="profile-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Niomi E. A.</span>
-          </button>
-        </div>
-      </header>
-
-      <!-- Content Views -->
-      <main class="content">
-        <!-- Dashboard View -->
-        <div class="view active" id="dashboard-view">
-          <div class="welcome-container">
-            <div class="welcome-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-            </div>
-            <h3>Bienvenido a AnalytiShop</h3>
-            <p>Para comenzar, sube tu primer archivo de ventas usando el botón de abajo</p>
-            <button class="btn-primary-large" id="upload-btn-main">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-              Subir Archivo de Ventas
-            </button>
-            <div class="format-info">
-              Formatos aceptados: <span class="csv-text">CSV</span>, <span class="xlsx-text">XLSX</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Proyecciones View -->
-        <div class="view" id="proyecciones-view">
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-header">
-                <div class="stat-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                  </svg>
-                </div>
-                <div class="stat-change">
-                  <div class="change-value">+15%</div>
-                  <div class="change-label">Vs Mes Anterior</div>
-                </div>
-              </div>
-              <div class="stat-value">$62,468</div>
-              <div class="stat-label">Ventas</div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-header">
-                <div class="stat-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
-                </div>
-                <div class="stat-change">
-                  <div class="change-value">+8%</div>
-                  <div class="change-label">Clientes Potenciales</div>
-                </div>
-              </div>
-              <div class="stat-value">210</div>
-              <div class="stat-label">Clientes</div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-header">
-                <div class="stat-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                </div>
-                <div class="stat-change">
-                  <div class="change-value">+3%</div>
-                  <div class="change-label">En Inventario</div>
-                </div>
-              </div>
-              <div class="stat-value">156</div>
-              <div class="stat-label">Productos</div>
-            </div>
-          </div>
-
-          <div class="chart-container">
-            <div class="chart-header">
-              <div>
-                <h3>Controles de Proyección</h3>
-                <p>Ajusta la proyección y compara con los datos históricos</p>
-              </div>
-              <div class="chart-filters">
-                <button class="filter-btn">3 Meses</button>
-                <button class="filter-btn">6 Meses</button>
-                <button class="filter-btn active">12 Meses</button>
-              </div>
-            </div>
-            <div class="chart-legend">
-              <button class="legend-item">
-                <span class="legend-dot cyan"></span>
-                Ventas Actuales
-              </button>
-              <button class="legend-item">
-                <span class="legend-dot emerald"></span>
-                Proyección
-              </button>
-              <button class="legend-item">
-                <span class="legend-dot amber"></span>
-                Desviación
-              </button>
-              <button class="legend-item">
-                <span class="legend-dot purple"></span>
-                Comparativa
-              </button>
-            </div>
-            <canvas id="salesChart"></canvas>
-          </div>
-        </div>
-
-        <!-- Other Views -->
-        <div class="view" id="reportes-view">
-          <div class="empty-state">
-            <div class="empty-icon">📊</div>
-            <h3>Reportes</h3>
-            <p>Esta sección está en desarrollo</p>
-          </div>
-        </div>
-
-        <div class="view" id="productos-view">
-          <div class="empty-state">
-            <div class="empty-icon">📦</div>
-            <h3>Productos</h3>
-            <p>Esta sección está en desarrollo</p>
-          </div>
-        </div>
-
-        <div class="view" id="clientes-view">
-          <div class="empty-state">
-            <div class="empty-icon">👥</div>
-            <h3>Clientes</h3>
-            <p>Esta sección está en desarrollo</p>
-          </div>
-        </div>
-
-        <div class="view" id="ajustes-view">
-          <div class="empty-state">
-            <div class="empty-icon">⚙️</div>
-            <h3>Ajustes</h3>
-            <p>Esta sección está en desarrollo</p>
-          </div>
-        </div>
-      </main>
+<body class="auth-body">
+  <main class="auth-card">
+    <div class="brand">
+      <div class="logo">AS</div>
+      <h1>AnalytiShop</h1>
+      <p class="muted">Registra tu tienda para comenzar</p>
     </div>
 
-    <!-- Notification Panel -->
-    <div class="notification-panel" id="notification-panel">
-      <h4>Notificaciones</h4>
-      <div class="notification-list">
-        <div class="notification-item">
-          <div class="notification-text">Nueva actualización disponible</div>
-          <div class="notification-time">Hace 2 horas</div>
-        </div>
-        <div class="notification-item">
-          <div class="notification-text">Reporte semanal listo</div>
-          <div class="notification-time">Hace 1 día</div>
-        </div>
-      </div>
-    </div>
+    <form id="registerForm" class="form">
+      <label for="username">Nombre de usuario</label>
+      <input id="username" type="text" placeholder="Ej: Nixon" required>
 
-    <!-- Profile Panel -->
-    <div class="profile-panel" id="profile-panel">
-      <div class="profile-header">
-        <div class="profile-avatar">N</div>
-        <div class="profile-info">
-          <div class="profile-label">Cambiar Foto</div>
-          <div class="profile-name-label">Nombre Completo</div>
-          <div class="profile-name">Niomi E. A.</div>
-        </div>
-      </div>
-      <div class="profile-section">
-        <div class="profile-field-label">Correo Electrónico</div>
-        <div class="profile-field-value">niomi.ea@example.com</div>
-      </div>
-      <button class="btn-save">Guardar Cambios</button>
-    </div>
+      <label for="shopname">Nombre de la tienda</label>
+      <input id="shopname" type="text" placeholder="Ej: Tienda Popayán" required>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-      <span id="toast-message"></span>
-    </div>
-  </div>
+      <div class="row">
+        <button class="btn primary" type="submit">Crear tienda</button>
+        <button class="btn ghost" id="demoBtn" type="button">Cargar demo</button>
+      </div>
+
+      <p class="small muted">Al crear se guardará un JSON simulado en <code>localStorage</code> para pruebas.</p>
+    </form>
+  </main>
 
   <script src="script.js"></script>
 </body>
-
 </html>

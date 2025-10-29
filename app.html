@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AnalytiShop — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-small">AS</div>
+      <h2>AnalytiShop</h2>
+    </div>
+
+    <nav class="side-nav">
+      <button data-section="dashboard" class="nav-btn active">Dashboard</button>
+      <button data-section="proyecciones" class="nav-btn">Proyecciones</button>
+      <button data-section="reportes" class="nav-btn">Reportes</button>
+      <button data-section="productos" class="nav-btn">Productos</button>
+      <button data-section="clientes" class="nav-btn">Clientes</button>
+      <button data-section="ajustes" class="nav-btn">Ajustes</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="status">
+        <small>ESTADO DEL SISTEMA</small>
+        <p><span class="dot green"></span> Datos: Online</p>
+        <p><span class="dot green"></span> API: Online</p>
+        <p><span class="dot amber"></span> Alertas: 2 nuevas</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="main-header">
+      <div>
+        <h1 id="mainTitle">Dashboard Principal</h1>
+        <small class="muted">Analiza en tiempo real tu negocio</small>
+      </div>
+      
+        <div id="userBadge" class="user-badge"></div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="section active-section">
+      <div class="welcome-card">
+        <div class="circle-icon">📄</div>
+        <h2>Bienvenido a AnalytiShop</h2>
+        <p>Para comenzar, sube tu primer archivo de ventas usando el botón de abajo</p>
+
+        <div class="upload-area">
+          <input id="fileInput" type="file" accept=".csv,.xlsx" hidden />
+          <label for="fileInput" class="btn primary">Subir Archivo de Ventas</label>
+          <p class="muted small">Formatos aceptados: <span class="chip">.xlsx</span> <span class="chip">.csv</span></p>
+        </div>
+      </div>
+
+      <div class="cards-row">
+        <div class="stat-card">
+          <small>Ventas Totales</small>
+          <h3 id="statVentas">$0</h3>
+          <span class="badge positive">+12.5%</span>
+        </div>
+        <div class="stat-card">
+          <small>Crecimiento Estimado</small>
+          <h3 id="statCrecimiento">+0%</h3>
+          <span class="badge positive">+15%</span>
+        </div>
+        <div class="stat-card">
+          <small>Productos Destacados</small>
+          <h3 id="statDestacados">0</h3>
+          <span class="badge">Top</span>
+        </div>
+        <div class="stat-card red">
+          <small>Pérdidas</small>
+          <h3 id="statPerdidas">$0</h3>
+          <span class="badge negative">-8.2%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECCIONES SECTION -->
+    <section id="proyecciones" class="section">
+      <div class="panel">
+        <div class="panel-left">
+          <h2>Proyecciones de Ventas</h2>
+          <p class="muted">Simula escenarios de crecimiento futuro</p>
+          <div class="controls">
+            <button class="small btn" data-range="3">3 Meses</button>
+            <button class="small btn" data-range="6">6 Meses</button>
+            <button class="small btn" data-range="12">1 Año</button>
+            <div class="scenario">
+              <label><input type="radio" name="scenario" value="optimista" checked> Optimista</label>
+              <label><input type="radio" name="scenario" value="conservador"> Conservador</label>
+              <label><input type="radio" name="scenario" value="contingencia"> Contingencia</label>
+            </div>
+          </div>
+
+          <div class="projection-cards">
+            <div class="small-card">
+              <small>Ingresos proyectados</small>
+              <h3 id="projIngresos">$0</h3>
+            </div>
+            <div class="small-card">
+              <small>Crecimiento estimado</small>
+              <h3 id="projCrec">+0%</h3>
+            </div>
+            <div class="small-card">
+              <small>Nuevos clientes potenciales</small>
+              <h3 id="projClientes">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-right">
+          <canvas id="projChart" height="320"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- AJUSTES SECTION -->
+    <section id="ajustes" class="section">
+      <div class="panel form-panel">
+        <h2>Ajustes</h2>
+        <div class="profile">
+          <div class="avatar">N</div>
+          <div>
+            <label>Nombre completo</label>
+            <input id="profileName" type="text">
+            <label>Correo electrónico</label>
+            <input id="profileEmail" type="email" placeholder="ejemplo@correo.com">
+            <button id="saveProfile" class="btn primary small">Guardar Cambios</button>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <h3>Notificaciones</h3>
+          <label class="switch"><input id="notifLow" type="checkbox" checked><span></span></label>
+          <span class="muted">Alertas de rendimiento bajo</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
